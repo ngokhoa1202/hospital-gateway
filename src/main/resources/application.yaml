@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: hospital-gateway
+server:
+  address: 127.0.0.1
+  port: 4900
+  http2:
+    enabled: true
+  servlet:
+    context-path: /api
+logging:
+  charset:
+    console: UTF-8
+  level:
+    org:
+      springframework: info
+      com:
+        javaweb:
+          hospital:
+            gateway: info
+  file:
+    name: logging/hospital-gateway.log
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+      max-history: 30
+      total-size-cap: 2GB
+  pattern:
+    dateformat: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+internal:
+  service:
+    patient-management: http://localhost:4897/api
+springdoc:
+  swagger-ui:
+    enabled: true

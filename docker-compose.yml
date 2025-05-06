@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  hospital-gateway:
+    build: .
+    container_name: hospital_gateway_app
+    restart: on-failure
+    ports:
+      - "4900:4900"
+    environment:
+      INTERNAL_SERVICE_PATIENT_MANAGEMENT: http://patient:8080/api
+      INTERNAL_SERVICE_APPOINTMENT_MANAGEMENT: http://appointment:8081/api/v1
+    networks:
+      - hospital-network
+
+networks:
+  hospital-network:
+    external: true
